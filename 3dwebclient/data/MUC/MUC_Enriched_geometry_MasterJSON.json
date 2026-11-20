@@ -1,0 +1,16 @@
+{
+	"version": "1.0.0",
+	"layername": "MUC_Enriched",
+	"fileextension": ".kml",
+	"displayform": "geometry",
+	"minLodPixels": 0,
+	"maxLodPixels": -1,
+	"colnum": 1,
+	"rownum": 1,
+	"bbox": {
+		"xmin": 11.5640073,
+		"xmax": 11.5733703,
+		"ymin": 48.2012781,
+		"ymax": 48.2088442
+	}
+}

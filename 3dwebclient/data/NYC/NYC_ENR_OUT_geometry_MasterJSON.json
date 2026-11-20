@@ -1,0 +1,16 @@
+{
+	"version": "1.0.0",
+	"layername": "NYC_ENR_OUT",
+	"fileextension": ".kml",
+	"displayform": "geometry",
+	"minLodPixels": 0,
+	"maxLodPixels": -1,
+	"colnum": 1,
+	"rownum": 1,
+	"bbox":{ 
+		"xmin": -74.02000536629022,
+		"xmax": -73.96999195121681,
+		"ymin": 40.7000016230089,
+		"ymax": 40.7299997919896
+	}
+}

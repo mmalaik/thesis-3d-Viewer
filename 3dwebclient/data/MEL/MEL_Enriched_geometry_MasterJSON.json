@@ -1,0 +1,16 @@
+{
+	"version": "1.0.0",
+	"layername": "MEL_Enriched",
+	"fileextension": ".kml",
+	"displayform": "geometry",
+	"minLodPixels": 0,
+	"maxLodPixels": -1,
+	"colnum": 1,
+	"rownum": 1,
+	"bbox":{ 
+		"xmin": 144.9202170909,
+		"xmax": 144.9870481585,
+		"ymin": -37.8466577947,
+		"ymax": -37.8014863463
+	}
+}
