@@ -1489,8 +1489,8 @@ function buildDefaultLayers() {
     var fn = "https://wucutkxtwfrntxdxhiqg.supabase.co/functions/v1/thematic/";
     var cities = [
         { name: "New York",  url: "data/NYC/NYC_ENR_OUT_geometry_MasterJSON.json",     table: "nyc_thematic",       active: true },
-        { name: "Munich",    url: "data/MUC/MUC_Enriched_geometry_MasterJSON.json",    table: "munich_thematic",    active: false },
-        { name: "Melbourne", url: "data/MEL/MEL_Enriched_geometry_MasterJSON.json",    table: "melbourne_thematic", active: false }
+        { name: "Munich",    url: "data/MUC/MUC_Enriched_geometry_MasterJSON.json",    table: "munich_thematic",    active: true },
+        { name: "Melbourne", url: "data/MEL/MEL_Enriched_geometry_MasterJSON.json",    table: "melbourne_thematic", active: true }
     ];
     return cities.map(function (c) {
         return new CitydbKmlLayer({
