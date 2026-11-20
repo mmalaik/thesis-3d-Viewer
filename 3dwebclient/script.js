@@ -1513,3 +1513,63 @@ function buildDefaultLayers() {
         });
     });
 }
+
+// Floating guide card for visitors
+(function () {
+    var style = document.createElement('style');
+    style.textContent =
+        '#guideCard{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:99990;' +
+        'width:min(440px,calc(100vw - 24px));box-sizing:border-box;padding:10px 14px 12px;' +
+        'background:rgba(42,42,42,0.88);border:2px solid #505050;border-radius:6px;color:#fff;' +
+        'font-family:Arial,sans-serif;font-size:13px;line-height:1.4;}' +
+        '#guideCard h3{margin:0 0 4px;font-size:15px;}' +
+        '#guideCard .gc-close{position:absolute;top:4px;right:8px;cursor:pointer;background:none;' +
+        'border:none;color:#ccc;font-size:18px;line-height:1;}' +
+        '#guideCard .gc-cities{display:flex;gap:6px;margin:8px 0;}' +
+        '#guideCard .gc-cities button{flex:1;}' +
+        '#guideCard ul{margin:6px 0 0;padding-left:18px;color:#ddd;}' +
+        '#guideCard.collapsed{width:auto;padding:6px 12px;cursor:pointer;}' +
+        '#guideCard.collapsed .gc-body{display:none;}' +
+        '#guideCard.collapsed .gc-close{display:none;}';
+    document.head.appendChild(style);
+
+    var card = document.createElement('div');
+    card.id = 'guideCard';
+    card.innerHTML =
+        '<button class="gc-close" title="Minimise">&ndash;</button>' +
+        '<div class="gc-title"><b>About this viewer</b></div>' +
+        '<div class="gc-body">' +
+        '<h3>Energy certificates in 3D city models</h3>' +
+        '<div>LLM-extracted EPC data mapped to CityGML EnergyADE and shown on real buildings.</div>' +
+        '<div class="gc-cities"></div>' +
+        '<ul>' +
+        '<li><b>Click a building</b> to see its energy attributes.</li>' +
+        '<li>Use the buttons above to jump between cities.</li>' +
+        '<li>Open <b>Show / Hide Toolbox</b> to switch cities on or off.</li>' +
+        '</ul></div>';
+    document.body.appendChild(card);
+
+    var cityBox = card.querySelector('.gc-cities');
+    ['New York', 'Munich', 'Melbourne'].forEach(function (cityName) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'cesium-button';
+        b.textContent = cityName;
+        b.onclick = function () {
+            var layer = webMap._layers.find(function (l) { return l.name === cityName; });
+            if (layer) layer.zoomToStartPosition();
+        };
+        cityBox.appendChild(b);
+    });
+
+    function setCollapsed(c) {
+        card.classList.toggle('collapsed', c);
+    }
+    card.querySelector('.gc-close').onclick = function (e) {
+        e.stopPropagation();
+        setCollapsed(true);
+    };
+    card.onclick = function () {
+        if (card.classList.contains('collapsed')) setCollapsed(false);
+    };
+})();
